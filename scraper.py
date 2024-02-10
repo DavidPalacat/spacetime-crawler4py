@@ -20,20 +20,14 @@ def extract_next_links(url, resp):
     #         resp.raw_response.url: the url, again
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
-    pagesLinks = []
-    pageCon = urllib.request.urlopen(resp)  # open a connection to the current url
-    pageContent = None
-    resultCode = pageCon.getcode()
+    scrapedLinks = []
+    if resp.status == 200:
+        pageContent = resp.raw_response.content
+        soup = BeautifulSoup(pageContent, "html.parser")
+        for link in soup.find_all('a'):
+            scrapedLinks.append(link.get('href'))
+    return scrapedLinks
 
-    if resultCode == 200:  # successful read of url
-        pageContent = pageCon.read()
-        pageHTML = BeautifulSoup(pageContent, 'html.parser')  # parse html
-        for link in pageHTML.find_all('a'):  # for each parsed link
-            pLink = link.get('href')
-            if pLink != url and is_valid(pLink):  # not the link we came from and is a valid link
-                pagesLinks.append(pLink)  # add to our list of links
-
-    return pagesLinks
 
 
 def is_valid(url):
