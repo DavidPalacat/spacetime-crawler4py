@@ -50,7 +50,8 @@ def is_valid(url):
         for host in [".ics.uci.edu/", ".cs.uci.edu/", ".informatics.uci.edu/", ".stat.uci.edu/"]:
             if host not in parsed.hostname:
                 return False
-        return True
     except TypeError:
         print("TypeError for ", parsed)
         raise
+    else:
+        return True
