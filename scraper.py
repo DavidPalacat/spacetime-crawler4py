@@ -25,7 +25,6 @@ def extract_next_links(url, resp):
         soup = BeautifulSoup(pageContent, "html.parser")
         for link in soup.find_all('a'):
             scrapedLinks.append(link.get('href'))
-            print(link.get('href'))
     return scrapedLinks
 
 
@@ -48,12 +47,6 @@ def is_valid(url):
                 + r"|thmx|mso|arff|rtf|jar|csv"
                 + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()):
             return False
-        for domain in {".ics.uci.edu/", ".cs.uci.edu/", ".informatics.uci.edu/",
-                       ".stat.uci.edu/"}:  # Check if one of the following domains is in the parsed input url.
-            if domain not in parsed.netloc:
-                continue
-            return True
-        return False
     except TypeError:
         print("TypeError for ", parsed)
         raise
