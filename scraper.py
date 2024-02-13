@@ -47,9 +47,8 @@ def is_valid(url):
                 + r"|thmx|mso|arff|rtf|jar|csv"
                 + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()):
             return False
-        for host in [".ics.uci.edu/", ".cs.uci.edu/", ".informatics.uci.edu/", ".stat.uci.edu/"]:
-            if host not in parsed.hostname:
-                return False
+        if parsed.hostname not in [".ics.uci.edu/", ".cs.uci.edu/", ".informatics.uci.edu/", ".stat.uci.edu/"]:
+            return False
     except TypeError:
         print("TypeError for ", parsed)
         raise
