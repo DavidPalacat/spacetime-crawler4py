@@ -25,7 +25,7 @@ def extract_next_links(url, resp):
         soup = BeautifulSoup(pageContent, "html.parser")
         for link in soup.find_all('a'):
             scrapedLinks.append(link.get('href'))
-            print(link)
+            print(link.get('href'))
     return scrapedLinks
 
 
