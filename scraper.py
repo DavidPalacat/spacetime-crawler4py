@@ -20,12 +20,12 @@ def extract_next_links(url, resp):
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
     scrapedLinks = []
-    scrapedLinks.append("https://ics.uci.edu/admissions-information-and-computer-science/")
     if resp.status == 200:
         pageContent = resp.raw_response.content
         soup = BeautifulSoup(pageContent, "html.parser")
         for link in soup.find_all('a'):
             scrapedLinks.append(link.get('href'))
+            print(link)
     return scrapedLinks
 
 
