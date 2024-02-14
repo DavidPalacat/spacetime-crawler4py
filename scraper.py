@@ -35,9 +35,6 @@ def is_valid(url):
     # Decide whether to crawl this url or not. 
     # If you decide to crawl it, return True; otherwise return False.
     # There are already some conditions that return False.
-    parsed = urlparse(url)
-    if parsed.hostname in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
-        return True
     try:
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
@@ -54,5 +51,11 @@ def is_valid(url):
             return False
     except TypeError:
         print("TypeError for ", parsed)
+        raise
+    try:
+        if parsed.hostname not in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
+            return False
+    except TypeError:
+        print("Invalid Domain ", parsed)
         raise
     return True
