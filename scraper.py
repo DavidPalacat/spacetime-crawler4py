@@ -50,10 +50,9 @@ def is_valid(url):
                 + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()):
             return False
         for domain  in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
-            if domain not in parsed:
-                return False
+            if domain in parsed:
+                return True
+
     except TypeError:
         print("TypeError for ", parsed)
         raise
-    else:
-        return True
