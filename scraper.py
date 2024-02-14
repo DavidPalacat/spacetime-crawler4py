@@ -49,8 +49,7 @@ def is_valid(url):
             return False
         domain = parsed.hostname
         domain = domain.replace("www.","")
-        print(domain)
-        if domain not in [".ics.uci.edu/", ".cs.uci.edu/", ".informatics.uci.edu/", ".stat.uci.edu/"]:
+        if domain not in [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]:
             return False
     except TypeError:
         print("TypeError for ", parsed)
