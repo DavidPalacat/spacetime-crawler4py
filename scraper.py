@@ -52,10 +52,6 @@ def is_valid(url):
     except TypeError:
         print("TypeError for ", parsed)
         raise
-    try:
-        if parsed.hostname not in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
-            return False
-    except TypeError:
-        print("Invalid Domain ", parsed)
-        raise
-    return True
+    else:
+        if parsed.hostname in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
+            return True
