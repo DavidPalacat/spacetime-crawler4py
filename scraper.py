@@ -52,6 +52,6 @@ def is_valid(url):
     except TypeError:
         print("TypeError for ", parsed)
         raise
-    else:
+    finally:
         if parsed.hostname in ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]:
             return True
