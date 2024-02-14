@@ -55,12 +55,3 @@ def is_valid(url):
     except TypeError:
         print("TypeError for ", parsed)
         raise
-    try:
-        if parsed.hostname.replace("www", "") in
-            return False
-
-    except TypeError:
-        print("TypeError for ", parsed)
-        raise
-
-    return True
