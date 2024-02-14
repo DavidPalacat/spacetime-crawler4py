@@ -6,8 +6,7 @@ from urllib.parse import urlparse
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     for link in links:
-        if is_valid(link):
-            print(link)
+        print(link)
     return [link for link in links if is_valid(link)]
 
 
